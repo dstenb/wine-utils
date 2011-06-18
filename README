@@ -1,0 +1,12 @@
+FORMATS
+
+* awesome - Awesome Window Manager
+To keep the rc.lua configuration file clean the WINE menu can be placed in
+another lua file and imported with the 'require' command, and added to the
+default menu as follows
+
+mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
+                                    { "open terminal", terminal },
+                                    { "wine", menu_b9eadba3c35f7f89e93c92eb2c8d39b0 }
+                                  }
+                        })
