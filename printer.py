@@ -66,6 +66,20 @@ class AwesomePrinter(Printer):
 	def create_ref(self, name):
 		return "menu_" +  hashlib.md5(name.encode('UTF-8')).hexdigest()
 
+''' Printer class for PekWM Window Manager '''
+class PekWMPrinter:
+	def print_menu(self, entry, lvl = 1):
+		name = entry.name.replace('\'', '\\\'').replace('\"', '\\\"')
+
+		if not entry.is_leaf():
+			print("%sSubmenu = \"%s\" {" % ("\t"*lvl, name))
+			for e in entry.entries:
+				self.print_menu(e, lvl + 1)
+			print("\t" * lvl,"}", sep="")
+		else:
+			cmd = entry.cmd.replace('\'', '\\\'').replace('\"', '\\\"')
+			print("%sEntry = \"%s\" { Actions = \"Exec %s &\" }" % ("\t"*lvl, name, cmd))
+
 def print_space(x):
 	''' Print x number of spaces, without newline at the end '''
 
