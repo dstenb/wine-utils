@@ -76,6 +76,7 @@ def usage(cmd):
 	print('Format list')
 	print(' plain          Plain menu format')
 	print(' awesome        Awesome Window Manager')
+	print(' pekwm          PekWM Window Manager')
 	print()
 
 def main(argv = None):
@@ -100,6 +101,8 @@ def main(argv = None):
 		elif o in ('-f', '--format'):
 			if a == 'awesome':
 				printer = AwesomePrinter()
+			elif a == 'pekwm':
+				printer = PekWMPrinter()
 			elif not (a == 'plain'):
 				print('unknown choice for', o)
 				sys.exit()
