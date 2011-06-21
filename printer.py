@@ -3,16 +3,13 @@ import hashlib
 ''' Base class for menu printers '''
 class Printer:
 	def print_menu(self, entry, lvl = 0):
-		print_space(lvl)
-
 		if not entry.is_leaf():
-			print(entry.name, "{")
+			print("%s%s {" % (" " * lvl, entry.name ))
 			for e in entry.entries:
 				self.print_menu(e, lvl + 1)
-			print_space(lvl)
-			print("}")
+			print("%s}" % " " * lvl)
 		else:
-			print(entry.name, entry.cmd)
+			print("%s%s %s" % (" " * lvl, entry.name, entry.cmd))
 
 ''' Printer class for Awesome Window Manager '''
 class AwesomePrinter(Printer):
@@ -79,10 +76,3 @@ class PekWMPrinter:
 		else:
 			cmd = entry.cmd.replace('\'', '\\\'').replace('\"', '\\\"')
 			print("%sEntry = \"%s\" { Actions = \"Exec %s &\" }" % ("\t"*lvl, name, cmd))
-
-def print_space(x):
-	''' Print x number of spaces, without newline at the end '''
-
-	while x > 0:
-		print(' ', end='')
-		x = x - 1
