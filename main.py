@@ -77,6 +77,7 @@ def usage(cmd):
 	print(' plain          Plain menu format')
 	print(' awesome        Awesome Window Manager')
 	print(' pekwm          PekWM Window Manager')
+	print(' pekwm-dynamic  PekWM Window Manager dynamic menu (see README)')
 	print()
 
 def main(argv = None):
@@ -102,7 +103,9 @@ def main(argv = None):
 			if a == 'awesome':
 				printer = AwesomePrinter()
 			elif a == 'pekwm':
-				printer = PekWMPrinter()
+				printer = PekWMPrinter(False)
+			elif a == 'pekwm-dynamic':
+				printer = PekWMPrinter(True)
 			elif not (a == 'plain'):
 				print('unknown choice for', o)
 				sys.exit()

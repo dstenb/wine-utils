@@ -10,3 +10,15 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                                     { "wine", menu_b9eadba3c35f7f89e93c92eb2c8d39b0 }
                                   }
                         })
+
+* pekwm - PekWM Window Manager
+Static menu that should be included in ~/.pekwm/menu
+
+* pekwm-dynamic - Dynamic PekWM Window Manager
+Dynamic menu that is reloaded every time it's selected.
+This is way more flexible than the normal menu.
+The dynamic menu can be included in ~/.pekwm/menu as
+
+Submenu = "WINE" {
+	Entry { Actions = "Dynamic /home/david/Code/wine-menu-creator/main.py -f pekwm-dynamic" }
+}

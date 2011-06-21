@@ -65,11 +65,18 @@ class AwesomePrinter(Printer):
 
 ''' Printer class for PekWM Window Manager '''
 class PekWMPrinter:
-	def print_menu(self, entry, lvl = 1):
+
+	def __init__(self, dynamic):
+		self.dynamic = dynamic
+
+	def print_menu(self, entry, lvl = 0):
 		name = entry.name.replace('\'', '\\\'').replace('\"', '\\\"')
 
 		if not entry.is_leaf():
-			print("%sSubmenu = \"%s\" {" % ("\t"*lvl, name))
+			if lvl == 0 and self.dynamic:
+				print("%sDynamic = \"%s\" {" % ("\t"*lvl, name))
+			else:
+				print("%sSubmenu = \"%s\" {" % ("\t"*lvl, name))
 			for e in entry.entries:
 				self.print_menu(e, lvl + 1)
 			print("\t" * lvl,"}", sep="")
