@@ -1,6 +1,6 @@
 # WINE Menu Creator
 
-WINE Menu Creator is a simple script that generats WINE menus for various
+WINE Menu Creator is a simple script that generates WINE menus for various
 window managers and other utilities.
 
 The script currently supports
@@ -30,5 +30,5 @@ This is way more flexible than the normal menu.
 The dynamic menu can be included in ~/.pekwm/menu as
 
     Submenu = "WINE" {
-        Entry { Actions = "Dynamic /home/david/Code/wine-menu-creator/main.py -f pekwm-dynamic" }
+        Entry { Actions = "Dynamic /home/david/code/wine-utils/wine-menu-creator/main.py -f pekwm-dynamic" }
     }
